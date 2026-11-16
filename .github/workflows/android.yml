@@ -1,8 +1,10 @@
 name: Compilar APK
-on: [push, pull_request]
+on: [push, pull_request, workflow_dispatch]
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      TIENE_CLAVES: ${{ secrets.KEYSTORE_BASE64 != '' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
@@ -10,11 +12,33 @@ jobs:
           distribution: temurin
           java-version: 17
       - uses: gradle/actions/setup-gradle@v4
+
       - name: Pruebas unitarias
         run: ./gradlew -p Android testDebugUnitTest
+
       - name: Compilar APK de depuracion
         run: ./gradlew -p Android assembleDebug
+
+      - name: Preparar firma y claves (solo si existen los secretos)
+        if: env.TIENE_CLAVES == 'true'
+        run: |
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > "$RUNNER_TEMP/sabortico.jks"
+          {
+            echo "api.base.url=http://10.0.2.2:5080/"
+            echo "aes.key.base64=MDEyMzQ1Njc4OWFiY2RlZjAxMjM0NTY3ODlhYmNkZWY="
+            echo "keystore.file=$RUNNER_TEMP/sabortico.jks"
+            echo "keystore.password=${{ secrets.KEYSTORE_PASSWORD }}"
+            echo "key.alias=sabortico"
+            echo "key.password=${{ secrets.KEYSTORE_PASSWORD }}"
+          } > Android/local.properties
+
+      - name: Compilar APK de produccion firmado
+        if: env.TIENE_CLAVES == 'true'
+        run: ./gradlew -p Android assembleRelease
+
       - uses: actions/upload-artifact@v4
         with:
-          name: app-debug
-          path: Android/app/build/outputs/apk/debug/app-debug.apk
+          name: apk
+          path: |
+            Android/app/build/outputs/apk/debug/app-debug.apk
+            Android/app/build/outputs/apk/release/app-release.apk

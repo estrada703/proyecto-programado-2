@@ -55,12 +55,11 @@
         android:visibility="gone" />
 
     <Button
-        android:id="@+id/btnReintentar"
+        android:id="@+id/btnActualizar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:minHeight="@dimen/alto_minimo_toque"
-        android:text="@string/boton_reintentar"
-        android:visibility="gone" />
+        android:text="@string/boton_actualizar" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvCompras"

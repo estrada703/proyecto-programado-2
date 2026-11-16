@@ -29,7 +29,7 @@
     <string name="sin_resultados">Ningún registro coincide con el filtro.</string>
     <string name="banner_sin_conexion">Sin conexión. Última actualización: %1$s</string>
     <string name="cargando">Cargando…</string>
-    <string name="boton_reintentar">Reintentar</string>
+    <string name="boton_actualizar">Actualizar</string>
 
     <!-- Detalle -->
     <string name="etq_descripcion">Descripción</string>

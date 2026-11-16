@@ -10,12 +10,10 @@ jobs:
           distribution: temurin
           java-version: 17
       - uses: gradle/actions/setup-gradle@v4
-        with:
-          gradle-version: 8.9
       - name: Pruebas unitarias
-        run: gradle -p Android testDebugUnitTest
+        run: ./gradlew -p Android testDebugUnitTest
       - name: Compilar APK de depuracion
-        run: gradle -p Android assembleDebug
+        run: ./gradlew -p Android assembleDebug
       - uses: actions/upload-artifact@v4
         with:
           name: app-debug

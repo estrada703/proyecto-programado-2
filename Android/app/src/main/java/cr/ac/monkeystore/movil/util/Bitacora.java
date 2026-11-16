@@ -12,6 +12,7 @@ public final class Bitacora {
     public static final String TAG_LISTADO = "MonkeyStore.Listado";
     public static final String TAG_RED = "MonkeyStore.Red";
     public static final String TAG_BD = "MonkeyStore.BD";
+    public static final String TAG_GESTION = "MonkeyStore.Gestion";
     public static final String TAG_CIFRADO = "MonkeyStore.Cifrado";
 
     private Bitacora() { }

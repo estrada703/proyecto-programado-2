@@ -28,6 +28,9 @@ public class Producto
     public decimal PrecioBase { get; set; }
     public bool EsPreventa { get; set; }
 
+    /// <summary>Unidades disponibles. El administrador lo actualiza desde la app móvil.</summary>
+    public int Stock { get; set; }
+
     /// <summary>Precio final según el estado de la carta (la regla vive en el modelo).</summary>
     [NotMapped]
     public decimal PrecioFinal => Estado switch
@@ -67,4 +70,20 @@ public class DetallePedido
 
     [NotMapped]
     public decimal Subtotal => PrecioUnitario * Cantidad;
+}
+
+/// <summary>Cambios de estado permitidos para un pedido (la regla vive en el modelo).</summary>
+public static class TransicionesPedido
+{
+    private static readonly Dictionary<EstadoPedido, EstadoPedido[]> Permitidas = new()
+    {
+        [EstadoPedido.PendientePago] = new[] { EstadoPedido.Pagado, EstadoPedido.Cancelado },
+        [EstadoPedido.Pagado] = new[] { EstadoPedido.Enviado, EstadoPedido.Cancelado },
+        [EstadoPedido.Enviado] = new[] { EstadoPedido.Entregado },
+        [EstadoPedido.Entregado] = Array.Empty<EstadoPedido>(),
+        [EstadoPedido.Cancelado] = Array.Empty<EstadoPedido>(),
+    };
+
+    public static bool EsPermitida(EstadoPedido desde, EstadoPedido hacia) =>
+        Permitidas.TryGetValue(desde, out var destinos) && destinos.Contains(hacia);
 }

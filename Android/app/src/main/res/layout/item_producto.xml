@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/espacio_chico"
+    android:layout_marginBottom="@dimen/espacio_chico"
+    android:clickable="true"
+    android:focusable="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:minHeight="@dimen/alto_minimo_toque"
+        android:orientation="horizontal"
+        android:padding="@dimen/espacio">
+
+        <TextView
+            android:id="@+id/tvInsignia"
+            android:layout_width="@dimen/tam_insignia"
+            android:layout_height="@dimen/tam_insignia"
+            android:background="@drawable/bg_circulo"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:importantForAccessibility="no"
+            android:textColor="@color/sobre_dorado"
+            android:textSize="@dimen/texto_pequeno"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/espacio"
+            android:layout_marginEnd="@dimen/espacio"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvNombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="sans-serif-medium"
+                android:maxLines="1"
+                android:textColor="@color/texto"
+                android:textSize="@dimen/texto_normal" />
+
+            <TextView
+                android:id="@+id/tvSubtitulo"
+                style="@style/TextoSecundario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1" />
+
+            <TextView
+                android:id="@+id/tvPrecio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/dorado"
+                android:textSize="@dimen/texto_pequeno" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvStock"
+            style="@style/Pill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

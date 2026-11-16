@@ -81,13 +81,8 @@ public class MovilApiController : ControllerBase
     [ProducesResponseType(StatusCodes.Status403Forbidden)]
     public async Task<ActionResult<IEnumerable<CompraMovilDto>>> Compras()
     {
-        var token = ObtenerToken();
-        var sesion = token == null ? null : _sesiones.Obtener(token);
-        if (sesion == null) return Unauthorized();
-
-        var usuario = await _usuarios.FindByIdAsync(sesion.UsuarioId);
-        if (usuario == null) return Unauthorized();
-        if (!usuario.AccesoMovilHabilitado) return StatusCode(StatusCodes.Status403Forbidden);
+        var (_, error) = await UsuarioDeSesionAsync();
+        if (error != null) return error;
 
         var detalles = await _db.DetallesPedido.AsNoTracking()
             .Include(d => d.Pedido)
@@ -107,6 +102,7 @@ public class MovilApiController : ControllerBase
                 Monto = d.Subtotal,
                 Catalogo = d.Producto.Franquicia!.Nombre,
                 Tipo = d.Producto.Tipo.Mostrar(),
+                PedidoId = d.PedidoId,
                 Pedido = d.Pedido.Numero,
                 Estado = d.Pedido.Estado.Mostrar(),
                 Condicion = d.Producto.Estado?.Mostrar() ?? string.Empty,
@@ -114,6 +110,118 @@ public class MovilApiController : ControllerBase
                 Reserva = d.Producto.EsPreventa,
             });
         return Ok(lista);
+    }
+
+    /// <summary>Inventario: todos los productos con su stock, los agotados primero.</summary>
+    /// <response code="200">Listado de productos.</response>
+    /// <response code="401">Sin token, token inválido o vencido.</response>
+    /// <response code="403">El administrador ya no tiene el acceso móvil habilitado.</response>
+    [HttpGet("productos")]
+    [ProducesResponseType(typeof(IEnumerable<ProductoMovilDto>), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status403Forbidden)]
+    public async Task<ActionResult<IEnumerable<ProductoMovilDto>>> Productos()
+    {
+        var (_, error) = await UsuarioDeSesionAsync();
+        if (error != null) return error;
+
+        var productos = await _db.Productos.AsNoTracking().Include(p => p.Franquicia).ToListAsync();
+        return Ok(productos
+            .OrderBy(p => p.Stock).ThenBy(p => p.Nombre)
+            .Select(AProductoDto));
+    }
+
+    /// <summary>Actualiza el stock de un producto.</summary>
+    /// <response code="200">Stock actualizado; devuelve el producto.</response>
+    /// <response code="400">Stock fuera de rango (0 a 9999).</response>
+    /// <response code="401">Sin token, token inválido o vencido.</response>
+    /// <response code="403">Sin acceso móvil.</response>
+    /// <response code="404">El producto no existe.</response>
+    [HttpPut("productos/{id:int}/stock")]
+    [ProducesResponseType(typeof(ProductoMovilDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status403Forbidden)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<ProductoMovilDto>> ActualizarStock(int id, [FromBody] StockDto dto)
+    {
+        var (usuario, error) = await UsuarioDeSesionAsync();
+        if (error != null) return error;
+
+        var producto = await _db.Productos.Include(p => p.Franquicia).FirstOrDefaultAsync(p => p.Id == id);
+        if (producto == null) return NotFound();
+        var anterior = producto.Stock;
+        producto.Stock = dto.Stock;
+        await _db.SaveChangesAsync();
+        _log.LogInformation("Usuario {UsuarioId} cambió el stock del producto {ProductoId}: {Anterior} -> {Nuevo}",
+            usuario!.Id, id, anterior, dto.Stock);
+        return Ok(AProductoDto(producto));
+    }
+
+    /// <summary>Cambia el estado de un pedido. Al cancelarlo, el stock de sus productos se devuelve.</summary>
+    /// <response code="200">Estado actualizado.</response>
+    /// <response code="400">Estado desconocido.</response>
+    /// <response code="401">Sin token, token inválido o vencido.</response>
+    /// <response code="403">Sin acceso móvil.</response>
+    /// <response code="404">El pedido no existe.</response>
+    /// <response code="409">El cambio no está permitido desde el estado actual.</response>
+    [HttpPut("pedidos/{id:int}/estado")]
+    [ProducesResponseType(typeof(PedidoEstadoDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status403Forbidden)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status409Conflict)]
+    public async Task<ActionResult<PedidoEstadoDto>> CambiarEstado(int id, [FromBody] CambioEstadoDto dto)
+    {
+        var (usuario, error) = await UsuarioDeSesionAsync();
+        if (error != null) return error;
+
+        if (!Enum.TryParse<EstadoPedido>(dto.Estado, ignoreCase: true, out var nuevo)
+            || !Enum.IsDefined(nuevo))
+            return BadRequest(new ProblemDetails { Title = "Estado desconocido", Status = 400 });
+
+        var pedido = await _db.Pedidos.Include(p => p.Detalles).ThenInclude(d => d.Producto)
+            .FirstOrDefaultAsync(p => p.Id == id);
+        if (pedido == null) return NotFound();
+        if (!TransicionesPedido.EsPermitida(pedido.Estado, nuevo))
+            return Conflict(new ProblemDetails { Title = "Cambio de estado no permitido", Status = 409 });
+
+        if (nuevo == EstadoPedido.Cancelado)
+        {
+            foreach (var d in pedido.Detalles)
+                d.Producto!.Stock += d.Cantidad;
+        }
+        var anterior = pedido.Estado;
+        pedido.Estado = nuevo;
+        await _db.SaveChangesAsync();
+        _log.LogInformation("Usuario {UsuarioId} cambió el pedido {Numero}: {Anterior} -> {Nuevo}",
+            usuario!.Id, pedido.Numero, anterior, nuevo);
+        return Ok(new PedidoEstadoDto(pedido.Id, pedido.Numero, pedido.Estado.Mostrar()));
+    }
+
+    private static ProductoMovilDto AProductoDto(Producto p) => new()
+    {
+        Id = p.Id,
+        Nombre = p.Nombre,
+        Catalogo = p.Franquicia?.Nombre ?? string.Empty,
+        Tipo = p.Tipo.Mostrar(),
+        Condicion = p.Estado?.Mostrar() ?? string.Empty,
+        Precio = p.PrecioFinal,
+        Stock = p.Stock,
+        Preventa = p.EsPreventa,
+    };
+
+    /// <summary>Valida el token Bearer: 401 si falta o venció, 403 si el usuario ya no tiene acceso móvil.</summary>
+    private async Task<(ApplicationUser? Usuario, ActionResult? Error)> UsuarioDeSesionAsync()
+    {
+        var token = ObtenerToken();
+        var sesion = token == null ? null : _sesiones.Obtener(token);
+        if (sesion == null) return (null, Unauthorized());
+        var usuario = await _usuarios.FindByIdAsync(sesion.UsuarioId);
+        if (usuario == null) return (null, Unauthorized());
+        if (!usuario.AccesoMovilHabilitado) return (null, StatusCode(StatusCodes.Status403Forbidden));
+        return (usuario, null);
     }
 
     private string? ObtenerToken()

@@ -15,7 +15,7 @@ public class PruebaResumen {
     private static Compra c(String pedido, String producto, String franquicia, int cant, double monto,
                             String estado, boolean reserva) {
         return new Compra(1, producto, "", monto / cant, cant, "2026-11-01T10:00:00", monto,
-                franquicia, "Sobre", pedido, estado, "", "Cliente", reserva);
+                franquicia, "Sobre", 1, pedido, estado, "", "Cliente", reserva);
     }
 
     private final List<Compra> datos = Arrays.asList(

@@ -62,22 +62,39 @@ Flujo de demostración:
 3. **Resumen**: ingresos, pedidos, ticket promedio, ventas por franquicia y más vendidos.
 4. **Pedidos**: filtrar por franquicia (chips) o buscar por nombre; tocar una tarjeta abre el detalle.
    En horizontal o en tableta, el detalle aparece al lado (E2).
-5. **Perfil > Cerrar sesión** vuelve al ingreso; «Atrás» no regresa al listado.
+5. En el detalle, **Gestionar pedido**: marcar como pagado, enviado o entregado, o cancelar
+   (al cancelar, el stock vuelve al inventario).
+6. **Inventario**: stock de cada producto con alertas (agotado o stock bajo); tocar un producto permite
+   ajustar las unidades.
+7. **Perfil > Cerrar sesión** vuelve al ingreso; «Atrás» no regresa al listado.
 
-## 4. Pruebas y APK
+## 4. Endpoints móviles
+
+| Método | Ruta | Uso |
+|---|---|---|
+| POST | `/api/movil/validar` | Registro en el dispositivo (credenciales cifradas) |
+| POST | `/api/movil/ingresar` | Ingreso; devuelve nombre y token |
+| GET | `/api/movil/compras` | Productos comprados o reservados |
+| PUT | `/api/movil/pedidos/{id}/estado` | Cambiar estado del pedido (409 si no se permite) |
+| GET | `/api/movil/productos` | Inventario |
+| PUT | `/api/movil/productos/{id}/stock` | Actualizar stock (0 a 9999) |
+
+Los cuatro últimos exigen `Authorization: Bearer <token>`.
+
+## 5. Pruebas y APK
 
 ```bash
 cd Android
-./gradlew testDebugUnitTest      # 19 pruebas unitarias (cifrado, hash, filtro, parser, resumen)
+./gradlew testDebugUnitTest      # 26 pruebas unitarias (cifrado, hash, filtro, parser, resumen, gestión)
 ./gradlew assembleDebug          # APK de depuración
 ```
 
 APK de producción: **Build > Generate Signed Bundle / APK** con un almacén de claves propio
 (`keystore.*` en `local.properties`). El almacén y sus contraseñas **no** van al repositorio ni al `.zip`.
 
-## 5. Extensiones implementadas
+## 6. Extensiones implementadas
 
 - **E1** Modo sin conexión: el último listado se guarda en SQLite y se muestra marcado como «sin conexión».
 - **E2** Diseño de dos paneles: listado y detalle lado a lado en horizontal y tableta (`layout-land`, `layout-sw600dp`).
-- **E8** Pruebas automatizadas: 19 pruebas JUnit.
+- **E8** Pruebas automatizadas: 26 pruebas JUnit.
 - **E9** Compilación automática del APK (y de la API) con GitHub Actions en cada `push`.

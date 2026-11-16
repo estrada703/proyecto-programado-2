@@ -17,6 +17,8 @@ import cr.ac.monkeystore.movil.datos.remoto.ServicioAutenticacion;
 import cr.ac.monkeystore.movil.datos.remoto.ServicioAutenticacionVolley;
 import cr.ac.monkeystore.movil.datos.remoto.ServicioCompras;
 import cr.ac.monkeystore.movil.datos.remoto.ServicioComprasVolley;
+import cr.ac.monkeystore.movil.datos.remoto.ServicioGestion;
+import cr.ac.monkeystore.movil.datos.remoto.ServicioGestionVolley;
 import cr.ac.monkeystore.movil.seguridad.Cifrador;
 import cr.ac.monkeystore.movil.seguridad.CifradorAesGcm;
 import cr.ac.monkeystore.movil.seguridad.CodificadorBase64Android;
@@ -48,6 +50,10 @@ public final class Fabrica {
 
     public static ServicioCompras compras(Context c) {
         return new ServicioComprasVolley(ClienteVolley.cola(c), BuildConfig.API_BASE_URL);
+    }
+
+    public static ServicioGestion gestion(Context c) {
+        return new ServicioGestionVolley(ClienteVolley.cola(c), BuildConfig.API_BASE_URL);
     }
 
     private static Cifrador cifrador() {

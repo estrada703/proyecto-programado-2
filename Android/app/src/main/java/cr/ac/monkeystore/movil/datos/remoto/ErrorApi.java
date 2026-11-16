@@ -6,6 +6,8 @@ public class ErrorApi {
         PETICION_INVALIDA,   // 400
         NO_AUTORIZADO,       // 401
         PROHIBIDO,           // 403
+        NO_ENCONTRADO,       // 404
+        CONFLICTO,           // 409
         SERVIDOR,            // 5xx
         RED,                 // sin conexión
         TIEMPO_AGOTADO,

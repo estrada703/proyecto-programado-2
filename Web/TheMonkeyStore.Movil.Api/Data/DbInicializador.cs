@@ -20,9 +20,23 @@ public static class DbInicializador
         var db = alcance.ServiceProvider.GetRequiredService<ApplicationDbContext>();
 
         if (db.Database.GetMigrations().Any())
+        {
             await db.Database.MigrateAsync();
+        }
         else
+        {
             await db.Database.EnsureCreatedAsync();
+            try
+            {
+                // Base de pruebas de una versión anterior (sin la columna Stock): se recrea.
+                await db.Productos.Select(p => p.Stock).FirstOrDefaultAsync();
+            }
+            catch (Microsoft.Data.Sqlite.SqliteException)
+            {
+                await db.Database.EnsureDeletedAsync();
+                await db.Database.EnsureCreatedAsync();
+            }
+        }
 
         var roles = alcance.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
         if (!await roles.RoleExistsAsync(RolAdministrador))
@@ -62,6 +76,8 @@ public static class DbInicializador
             P(lorcana, "Starter Deck Azurite Sea", "Mazo de inicio listo para jugar.", TipoProducto.Caja, 12500),
             P(lorcana, "Fundas premium Dragon Shield", "Paquete de 100 fundas mate.", TipoProducto.Accesorio, 6500),
         };
+        var stocks = new[] { 3, 1, 48, 0, 20, 4, 1, 6, 60, 2, 2, 9, 25 };
+        for (var i = 0; i < productos.Length; i++) productos[i].Stock = stocks[i];
         db.Productos.AddRange(productos);
         await db.SaveChangesAsync();
 

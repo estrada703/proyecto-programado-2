@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingStart="@dimen/espacio_grande"
+    android:paddingTop="@dimen/espacio"
+    android:paddingEnd="@dimen/espacio_grande">
+
+    <Button
+        android:id="@+id/btnMenos"
+        style="@style/Widget.Material3.Button.TonalButton"
+        android:layout_width="@dimen/alto_boton"
+        android:layout_height="@dimen/alto_boton"
+        android:contentDescription="@string/descripcion_menos"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:padding="0dp"
+        android:text="@string/simbolo_menos"
+        android:textSize="@dimen/texto_titulo" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilStock"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/espacio"
+        android:layout_marginEnd="@dimen/espacio"
+        android:layout_weight="1"
+        android:hint="@string/hint_stock">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etStock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:maxLength="4"
+            android:minHeight="@dimen/alto_minimo_toque"
+            android:textSize="@dimen/texto_kpi" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnMas"
+        style="@style/Widget.Material3.Button.TonalButton"
+        android:layout_width="@dimen/alto_boton"
+        android:layout_height="@dimen/alto_boton"
+        android:contentDescription="@string/descripcion_mas"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:padding="0dp"
+        android:text="@string/simbolo_mas"
+        android:textSize="@dimen/texto_titulo" />
+</LinearLayout>

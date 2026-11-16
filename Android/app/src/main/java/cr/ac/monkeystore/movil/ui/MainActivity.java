@@ -83,6 +83,8 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.menu_perfil) {
             f = PerfilFragment.nuevo(getIntent().getStringExtra(EXTRA_NOMBRE),
                     getIntent().getStringExtra(EXTRA_CORREO));
+        } else if (id == R.id.menu_inventario) {
+            f = new InventarioFragment();
         } else if (id == R.id.menu_listado) {
             f = new ListadoFragment();
         } else {
@@ -124,6 +126,14 @@ public class MainActivity extends AppCompatActivity {
                     .replace(R.id.contenedor, DetalleFragment.nuevo(compra))
                     .addToBackStack(null)
                     .commit();
+        }
+    }
+
+    /** Tras cambiar el estado de un pedido, el listado visible se vuelve a pintar. */
+    public void alCambiarPedido() {
+        Fragment f = getSupportFragmentManager().findFragmentById(R.id.contenedor);
+        if (f instanceof ListadoFragment) {
+            ((ListadoFragment) f).refrescar();
         }
     }
 

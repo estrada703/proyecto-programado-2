@@ -31,6 +31,7 @@ public final class CompraParser {
                     o.getDouble("monto"),
                     o.optString("catalogo", ""),
                     o.optString("tipo", ""),
+                    o.optInt("pedidoId", 0),
                     o.optString("pedido", ""),
                     o.optString("estado", ""),
                     o.optString("condicion", ""),

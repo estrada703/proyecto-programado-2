@@ -1,5 +1,6 @@
 package cr.ac.monkeystore.movil.modelo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -46,6 +47,16 @@ public final class Sesion {
     public String getCorreo() { return correo; }
     public List<Compra> getCompras() { return compras; }
     public void setCompras(List<Compra> compras) { this.compras = compras; }
+
+    /** Tras cambiar el estado en la API, actualiza todas las líneas de ese pedido en memoria. */
+    public void reemplazarEstado(int pedidoId, String estado) {
+        if (compras == null) return;
+        List<Compra> nuevas = new ArrayList<>(compras.size());
+        for (Compra c : compras) {
+            nuevas.add(c.getPedidoId() == pedidoId ? c.conEstado(estado) : c);
+        }
+        compras = nuevas;
+    }
     public String getFiltroTexto() { return filtroTexto; }
     public void setFiltroTexto(String filtroTexto) { this.filtroTexto = filtroTexto; }
     /** @return marca de tiempo de la caché mostrada, o 0 si los datos vienen en línea (E1). */

@@ -16,6 +16,8 @@ public final class MapeadorErrores {
             if (codigo == 400) return new ErrorApi(ErrorApi.Tipo.PETICION_INVALIDA);
             if (codigo == 401) return new ErrorApi(ErrorApi.Tipo.NO_AUTORIZADO);
             if (codigo == 403) return new ErrorApi(ErrorApi.Tipo.PROHIBIDO);
+            if (codigo == 404) return new ErrorApi(ErrorApi.Tipo.NO_ENCONTRADO);
+            if (codigo == 409) return new ErrorApi(ErrorApi.Tipo.CONFLICTO);
             if (codigo >= 500) return new ErrorApi(ErrorApi.Tipo.SERVIDOR);
             return new ErrorApi(ErrorApi.Tipo.DESCONOCIDO);
         }

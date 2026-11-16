@@ -130,6 +130,45 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/espacio_grande"
             android:layout_marginBottom="@dimen/espacio_chico"
+            android:text="@string/seccion_gestion" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/contAcciones"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/espacio">
+
+                <TextView
+                    android:id="@+id/tvSinAcciones"
+                    style="@style/TextoSecundario"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/espacio_chico"
+                    android:text="@string/gestion_sin_acciones" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/progresoGestion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espacio_chico"
+            android:indeterminate="true"
+            android:visibility="invisible"
+            app:indicatorColor="@color/dorado"
+            app:trackColor="@color/fondo" />
+
+        <TextView
+            style="@style/TextoSeccion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espacio_grande"
+            android:layout_marginBottom="@dimen/espacio_chico"
             android:text="@string/seccion_pedido" />
 
         <com.google.android.material.card.MaterialCardView

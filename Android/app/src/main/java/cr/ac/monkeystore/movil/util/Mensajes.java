@@ -16,6 +16,8 @@ public final class Mensajes {
             case NO_AUTORIZADO:
                 return c.getString(enSesion ? R.string.api_401_sesion : R.string.api_401_credenciales);
             case PROHIBIDO: return c.getString(R.string.api_403);
+            case NO_ENCONTRADO: return c.getString(R.string.api_404);
+            case CONFLICTO: return c.getString(R.string.api_409);
             case SERVIDOR: return c.getString(R.string.api_servidor);
             case RED: return c.getString(R.string.api_red);
             case TIEMPO_AGOTADO: return c.getString(R.string.api_tiempo);

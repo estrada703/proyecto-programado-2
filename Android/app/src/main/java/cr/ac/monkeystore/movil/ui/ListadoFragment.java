@@ -159,6 +159,11 @@ public class ListadoFragment extends Fragment {
         chip.setChecked(marcado);
     }
 
+    /** Vuelve a pintar con los datos en memoria (por ejemplo, tras cambiar un estado). */
+    public void refrescar() {
+        if (isAdded()) aplicarFiltro();
+    }
+
     private void aplicarFiltro() {
         List<Compra> todas = Sesion.obtener().getCompras();
         if (todas == null || adaptador == null) {

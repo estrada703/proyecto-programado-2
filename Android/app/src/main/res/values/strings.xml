@@ -25,6 +25,41 @@
     <string name="menu_resumen">Resumen</string>
     <string name="menu_listado">Pedidos</string>
     <string name="menu_perfil">Perfil</string>
+    <string name="menu_inventario">Inventario</string>
+
+    <!-- Gestión de pedidos -->
+    <string name="seccion_gestion">Gestionar pedido</string>
+    <string name="gestion_sin_acciones">Este pedido ya no admite cambios de estado.</string>
+    <string name="accion_Pagado">Marcar como pagado</string>
+    <string name="accion_Enviado">Marcar como enviado</string>
+    <string name="accion_Entregado">Marcar como entregado</string>
+    <string name="accion_Cancelado">Cancelar pedido</string>
+    <string name="confirmar_titulo">¿Cambiar el pedido %1$s?</string>
+    <string name="confirmar_estado">Pasará a «%1$s». Afecta a todos los productos de este pedido.</string>
+    <string name="confirmar_cancelar">El pedido se cancelará y el stock de sus productos volverá al inventario. Esta acción no se puede deshacer.</string>
+    <string name="boton_confirmar">Confirmar</string>
+    <string name="boton_cancelar_dialogo">Volver</string>
+    <string name="msg_estado_ok">Pedido %1$s: %2$s</string>
+
+    <!-- Inventario -->
+    <string name="titulo_inventario">Inventario</string>
+    <string name="conteo_inventario">%1$d productos · %2$d con alerta</string>
+    <string name="hint_buscar_inventario">Buscar producto o franquicia</string>
+    <string name="vista_todos">Todos</string>
+    <string name="vista_bajo">Stock bajo</string>
+    <string name="vista_agotados">Agotados</string>
+    <string name="inventario_vacio">No hay productos que coincidan.</string>
+    <string name="stock_unidades">%1$d en stock</string>
+    <string name="stock_agotado">Agotado</string>
+    <string name="titulo_stock">Actualizar stock</string>
+    <string name="hint_stock">Unidades disponibles</string>
+    <string name="error_stock">Escriba un número entre 0 y 9999.</string>
+    <string name="descripcion_menos">Restar una unidad</string>
+    <string name="descripcion_mas">Sumar una unidad</string>
+    <string name="simbolo_menos">−</string>
+    <string name="simbolo_mas">+</string>
+    <string name="boton_guardar">Guardar</string>
+    <string name="msg_stock_ok">%1$s: %2$d en stock</string>
 
     <!-- Resumen -->
     <string name="saludo">Hola, %1$s</string>
@@ -101,6 +136,8 @@
     <!-- Mensajes: red / API -->
     <string name="api_400">El servidor rechazó el mensaje por estar alterado o mal formado.</string>
     <string name="api_401_credenciales">El correo o la contraseña no son válidos en The Monkey Store.</string>
+    <string name="api_404">Ese registro ya no existe en la tienda. Actualice la lista.</string>
+    <string name="api_409">Ese cambio de estado no está permitido para el pedido. Actualice la lista.</string>
     <string name="api_403">Su usuario no tiene el acceso móvil habilitado. Pídalo a otro administrador.</string>
     <string name="api_401_sesion">Su sesión venció. Ingrese de nuevo.</string>
     <string name="api_red">No hay conexión con el servidor. Verifique que la API esté encendida y su red.</string>

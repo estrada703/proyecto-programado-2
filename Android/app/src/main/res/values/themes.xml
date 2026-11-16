@@ -1,7 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.SaborTico" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/primario</item>
-        <item name="colorSecondary">@color/secundario</item>
+    <style name="Theme.MonkeyStore" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/dorado</item>
+        <item name="colorOnPrimary">@color/sobre_dorado</item>
+        <item name="colorPrimaryContainer">@color/dorado_oscuro</item>
+        <item name="colorSecondary">@color/estado_verde</item>
+        <item name="colorSecondaryContainer">@color/tarjeta_alta</item>
+        <item name="colorOnSecondaryContainer">@color/dorado</item>
+        <item name="android:colorBackground">@color/fondo</item>
+        <item name="colorSurface">@color/superficie</item>
+        <item name="colorSurfaceContainer">@color/superficie</item>
+        <item name="colorOnSurface">@color/texto</item>
+        <item name="colorOnSurfaceVariant">@color/texto_secundario</item>
+        <item name="colorOutline">@color/borde</item>
+        <item name="colorError">@color/estado_rojo</item>
+        <item name="android:windowBackground">@color/fondo</item>
+        <item name="android:statusBarColor">@color/fondo</item>
+        <item name="android:navigationBarColor">@color/superficie</item>
+        <item name="materialCardViewStyle">@style/Tarjeta</item>
+        <item name="textInputStyle">@style/Campo</item>
+    </style>
+
+    <style name="Tarjeta" parent="Widget.Material3.CardView.Filled">
+        <item name="cardBackgroundColor">@color/tarjeta</item>
+        <item name="cardCornerRadius">@dimen/radio_tarjeta</item>
+        <item name="strokeColor">@color/borde</item>
+        <item name="strokeWidth">@dimen/borde_tarjeta</item>
+        <item name="cardElevation">0dp</item>
+    </style>
+
+    <style name="Campo" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxCornerRadiusTopStart">@dimen/radio_boton</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/radio_boton</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/radio_boton</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/radio_boton</item>
+        <item name="boxStrokeColor">@color/dorado</item>
+        <item name="boxBackgroundColor">@color/tarjeta</item>
+        <item name="startIconTint">@color/texto_secundario</item>
+        <item name="endIconTint">@color/texto_secundario</item>
+        <item name="hintTextColor">@color/dorado</item>
+    </style>
+
+    <style name="BotonPrincipal" parent="Widget.Material3.Button">
+        <item name="android:minHeight">@dimen/alto_boton</item>
+        <item name="cornerRadius">@dimen/radio_boton</item>
+        <item name="android:textSize">@dimen/texto_normal</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">0.02</item>
+    </style>
+
+    <style name="BotonTexto" parent="Widget.Material3.Button.TextButton">
+        <item name="android:minHeight">@dimen/alto_minimo_toque</item>
+        <item name="android:textColor">@color/dorado</item>
+    </style>
+
+    <style name="BotonPeligro" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:minHeight">@dimen/alto_boton</item>
+        <item name="cornerRadius">@dimen/radio_boton</item>
+        <item name="android:textColor">@color/estado_rojo</item>
+        <item name="strokeColor">@color/estado_rojo</item>
+        <item name="iconTint">@color/estado_rojo</item>
+    </style>
+
+    <style name="TextoTitulo">
+        <item name="android:textSize">@dimen/texto_titulo</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/texto</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="TextoSeccion">
+        <item name="android:textSize">@dimen/texto_mini</item>
+        <item name="android:textColor">@color/dorado</item>
+        <item name="android:letterSpacing">0.12</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="TextoSecundario">
+        <item name="android:textSize">@dimen/texto_pequeno</item>
+        <item name="android:textColor">@color/texto_secundario</item>
+    </style>
+
+    <style name="TextoEtiqueta">
+        <item name="android:textSize">@dimen/texto_pequeno</item>
+        <item name="android:textColor">@color/texto_tenue</item>
+    </style>
+
+    <style name="TextoValor">
+        <item name="android:textSize">@dimen/texto_normal</item>
+        <item name="android:textColor">@color/texto</item>
+    </style>
+
+    <style name="Pill">
+        <item name="android:background">@drawable/bg_pill</item>
+        <item name="android:paddingStart">10dp</item>
+        <item name="android:paddingEnd">10dp</item>
+        <item name="android:paddingTop">3dp</item>
+        <item name="android:paddingBottom">3dp</item>
+        <item name="android:textSize">@dimen/texto_mini</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="FilaInfo">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:minHeight">@dimen/alto_minimo_toque</item>
+        <item name="android:gravity">center_vertical</item>
     </style>
 </resources>

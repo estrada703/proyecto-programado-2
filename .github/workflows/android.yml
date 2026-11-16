@@ -1,4 +1,4 @@
-name: Compilar APK
+name: Compilar APK y API
 on: [push, pull_request, workflow_dispatch]
 jobs:
   build:
@@ -45,3 +45,14 @@ jobs:
           path: |
             Android/app/build/outputs/apk/debug/app-debug.apk
             Android/app/build/outputs/apk/release/app-release.apk
+
+  api:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - name: Compilar la Web API
+        working-directory: Web
+        run: dotnet build TheMonkeyStore.Movil.sln -c Release

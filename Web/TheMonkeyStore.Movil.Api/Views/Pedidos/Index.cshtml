@@ -1,0 +1,21 @@
+@model List<Pedido>
+@{
+    ViewData["Title"] = "Pedidos";
+}
+<h1 class="h3 mb-3">Pedidos</h1>
+<table class="table table-dark table-striped align-middle">
+    <thead><tr><th>Pedido</th><th>Fecha</th><th>Cliente</th><th>Productos</th><th>Estado</th><th class="text-end">Total</th></tr></thead>
+    <tbody>
+    @foreach (var p in Model)
+    {
+        <tr>
+            <td>@p.Numero</td>
+            <td>@p.Fecha.ToString("yyyy-MM-dd HH:mm")</td>
+            <td>@p.NombreCliente</td>
+            <td>@string.Join(", ", p.Detalles.Select(d => $"{d.Cantidad}× {d.Producto?.Nombre}"))</td>
+            <td>@p.Estado.Mostrar()</td>
+            <td class="text-end">₡@p.Detalles.Sum(d => d.Subtotal).ToString("N0")</td>
+        </tr>
+    }
+    </tbody>
+</table>

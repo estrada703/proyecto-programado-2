@@ -1,48 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Sabor Tico Admin</string>
+    <string name="app_name">Monkey Store Admin</string>
+    <string name="marca">The Monkey Store</string>
+    <string name="descripcion_logo">Logotipo de The Monkey Store</string>
 
     <!-- Ingreso -->
-    <string name="titulo_ingreso">Ingreso de administrador</string>
-    <string name="subtitulo_ingreso">Consulte las compras y reservas de su negocio</string>
+    <string name="subtitulo_ingreso">Panel del administrador</string>
+    <string name="titulo_ingreso">Bienvenido de nuevo</string>
+    <string name="detalle_ingreso">Ingrese con su cuenta de administrador para revisar los pedidos de la tienda.</string>
     <string name="hint_correo">Correo electrónico</string>
     <string name="hint_clave">Contraseña</string>
     <string name="hint_nombre">Nombre completo</string>
     <string name="boton_ingresar">Ingresar</string>
-    <string name="boton_ir_registro">Registrar administrador en este dispositivo</string>
+    <string name="boton_ir_registro">¿Primera vez aquí? Registre este dispositivo</string>
+    <string name="pie_seguridad">Conexión cifrada con AES-256-GCM</string>
 
     <!-- Registro -->
-    <string name="titulo_registro">Registro en el dispositivo</string>
-    <string name="boton_registrar">Registrar</string>
+    <string name="titulo_registro">Registrar este dispositivo</string>
+    <string name="detalle_registro">Confirmaremos con The Monkey Store que usted es administrador con acceso móvil. Solo entonces se guarda en este teléfono.</string>
+    <string name="boton_registrar">Registrar dispositivo</string>
     <string name="boton_volver">Volver al ingreso</string>
 
-    <!-- Principal -->
-    <string name="menu_listado">Compras</string>
+    <!-- Navegación -->
+    <string name="menu_resumen">Resumen</string>
+    <string name="menu_listado">Pedidos</string>
     <string name="menu_perfil">Perfil</string>
-    <string name="titulo_listado">Compras y reservas</string>
-    <string name="titulo_detalle">Detalle</string>
-    <string name="titulo_perfil">Perfil del administrador</string>
-    <string name="hint_buscar">Buscar por nombre del producto</string>
-    <string name="todas_las_sedes">Todas las sedes</string>
-    <string name="etiqueta_sede">Sede</string>
-    <string name="lista_vacia">Aún no hay compras ni reservas para mostrar.</string>
-    <string name="sin_resultados">Ningún registro coincide con el filtro.</string>
-    <string name="banner_sin_conexion">Sin conexión. Última actualización: %1$s</string>
-    <string name="cargando">Cargando…</string>
-    <string name="boton_actualizar">Actualizar</string>
+
+    <!-- Resumen -->
+    <string name="saludo">Hola, %1$s</string>
+    <string name="subtitulo_resumen">Así va la tienda</string>
+    <string name="kpi_ingresos">Ingresos</string>
+    <string name="kpi_pedidos">Pedidos</string>
+    <string name="kpi_ticket">Ticket promedio</string>
+    <string name="kpi_articulos">Artículos vendidos</string>
+    <string name="seccion_franquicias">Ventas por franquicia</string>
+    <string name="seccion_mas_vendidos">Más vendidos</string>
+    <string name="seccion_estados">Pedidos por estado</string>
+    <string name="unidades">%1$d u.</string>
+    <string name="pedidos_cantidad">%1$d</string>
+    <string name="reservas_nota">%1$d en preventa</string>
+    <string name="sin_ventas">Aún no hay ventas para resumir.</string>
+    <string name="descripcion_grafico">Gráfico de ventas por franquicia</string>
+
+    <!-- Listado -->
+    <string name="titulo_listado">Productos vendidos</string>
+    <string name="conteo_listado">%1$d artículos · %2$s</string>
+    <string name="hint_buscar">Buscar carta, sobre o caja</string>
+    <string name="todas_las_franquicias">Todas</string>
+    <string name="etiqueta_franquicia">Franquicia</string>
+    <string name="lista_vacia">Aún no hay productos comprados ni reservados.</string>
+    <string name="sin_resultados">Ningún producto coincide con el filtro.</string>
+    <string name="banner_sin_conexion">Sin conexión · datos del %1$s</string>
+    <string name="seleccione_compra">Seleccione un producto para ver su detalle</string>
+    <string name="separador">" · "</string>
 
     <!-- Detalle -->
+    <string name="titulo_detalle">Detalle</string>
     <string name="etq_descripcion">Descripción</string>
     <string name="etq_precio">Precio unitario</string>
     <string name="etq_cantidad">Cantidad</string>
     <string name="etq_fecha">Fecha</string>
     <string name="etq_monto">Monto total</string>
+    <string name="etq_pedido">Pedido</string>
+    <string name="etq_cliente">Cliente</string>
     <string name="etq_tipo">Tipo</string>
-    <string name="descripcion_icono_producto">Ilustración del producto</string>
+    <string name="calculo_monto">%1$d × %2$s</string>
+    <string name="preventa">Preventa</string>
+    <string name="seccion_pedido">Datos del pedido</string>
 
     <!-- Perfil -->
     <string name="etq_nombre">Nombre</string>
     <string name="etq_correo">Correo</string>
+    <string name="acceso_movil_ok">Acceso móvil habilitado</string>
+    <string name="seccion_seguridad">Seguridad y conexión</string>
+    <string name="etq_servidor">Servidor</string>
+    <string name="etq_cifrado">Cifrado</string>
+    <string name="valor_cifrado">AES-256-GCM</string>
+    <string name="etq_almacen">Credenciales locales</string>
+    <string name="valor_almacen">SQLite · PBKDF2 con sal</string>
+    <string name="etq_version">Versión</string>
     <string name="boton_cerrar_sesion">Cerrar sesión</string>
 
     <!-- Mensajes: validación -->
@@ -56,7 +92,7 @@
     <string name="msg_no_registrado">Este administrador no está registrado en este dispositivo. Regístrelo primero.</string>
     <string name="msg_clave_local_incorrecta">La contraseña no coincide con la registrada en este dispositivo.</string>
     <string name="msg_ya_registrado">Ese correo ya está registrado en este dispositivo.</string>
-    <string name="msg_registro_ok">Administrador registrado. Ya puede ingresar.</string>
+    <string name="msg_registro_ok">Dispositivo registrado. Ya puede ingresar.</string>
     <string name="msg_ingreso_ok">Bienvenido, %1$s.</string>
     <string name="msg_error_bd">No se pudo guardar el administrador en el dispositivo. Intente de nuevo.</string>
     <string name="msg_clave_cifrado_faltante">La clave de cifrado no está configurada. Revise local.properties.</string>
@@ -64,8 +100,8 @@
 
     <!-- Mensajes: red / API -->
     <string name="api_400">El servidor rechazó el mensaje por estar alterado o mal formado.</string>
-    <string name="api_401_credenciales">El correo o la contraseña no son válidos en el sistema.</string>
-    <string name="api_403">Su usuario no tiene el acceso móvil habilitado. Pídalo al administrador principal.</string>
+    <string name="api_401_credenciales">El correo o la contraseña no son válidos en The Monkey Store.</string>
+    <string name="api_403">Su usuario no tiene el acceso móvil habilitado. Pídalo a otro administrador.</string>
     <string name="api_401_sesion">Su sesión venció. Ingrese de nuevo.</string>
     <string name="api_red">No hay conexión con el servidor. Verifique que la API esté encendida y su red.</string>
     <string name="api_tiempo">El servidor tardó demasiado en responder. Intente de nuevo.</string>

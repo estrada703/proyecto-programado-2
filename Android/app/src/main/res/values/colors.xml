@@ -1,10 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primario">#B3261E</color>
-    <color name="primario_oscuro">#8C1D18</color>
-    <color name="secundario">#FFB300</color>
-    <color name="fondo_banner">#FFF3CD</color>
-    <color name="texto_banner">#664D03</color>
-    <color name="texto_error">#B3261E</color>
+    <!-- Paleta "selva y oro" de The Monkey Store -->
+    <color name="fondo">#0E1714</color>
+    <color name="superficie">#15221D</color>
+    <color name="tarjeta">#1B2B25</color>
+    <color name="tarjeta_alta">#223630</color>
+    <color name="borde">#2A3D35</color>
+    <color name="dorado">#D9B465</color>
+    <color name="dorado_oscuro">#A9853A</color>
+    <color name="sobre_dorado">#1A1405</color>
+    <color name="texto">#EDEFEA</color>
+    <color name="texto_secundario">#9FB3A8</color>
+    <color name="texto_tenue">#6E8378</color>
+
+    <color name="estado_verde">#3DDC97</color>
+    <color name="estado_azul">#6FB7F2</color>
+    <color name="estado_gris">#A3B1AA</color>
+    <color name="estado_ambar">#F2B544</color>
+    <color name="estado_rojo">#F2716B</color>
+
+    <color name="fondo_banner">#33F2B544</color>
+    <color name="texto_banner">#F2B544</color>
+    <color name="degradado_inicio">#1F3A2F</color>
+    <color name="degradado_fin">#0E1714</color>
+
+    <color name="franq_1">#E8664A</color>
+    <color name="franq_2">#C9A24E</color>
+    <color name="franq_3">#8C7AE6</color>
+    <color name="franq_4">#4FB3BF</color>
+    <color name="franq_5">#E27BB1</color>
+    <color name="franq_6">#7CC46A</color>
+    <array name="paleta_franquicias">
+        <item>@color/franq_1</item>
+        <item>@color/franq_2</item>
+        <item>@color/franq_3</item>
+        <item>@color/franq_4</item>
+        <item>@color/franq_5</item>
+        <item>@color/franq_6</item>
+    </array>
+
     <color name="blanco">#FFFFFF</color>
 </resources>

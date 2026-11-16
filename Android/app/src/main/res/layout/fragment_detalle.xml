@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/fondo">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -9,95 +11,249 @@
         android:orientation="vertical"
         android:padding="@dimen/margen_pantalla">
 
-        <TextView
-            android:id="@+id/tvDetProducto"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/texto_titulo"
-            android:textStyle="bold" />
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tvDetTipo"
+            <TextView
+                android:id="@+id/tvDetInsignia"
+                android:layout_width="@dimen/tam_insignia_grande"
+                android:layout_height="@dimen/tam_insignia_grande"
+                android:background="@drawable/bg_circulo"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:importantForAccessibility="no"
+                android:textColor="@color/sobre_dorado"
+                android:textSize="@dimen/texto_subtitulo"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/espacio"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvDetCatalogo"
+                    style="@style/TextoSeccion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/tvDetProducto"
+                    style="@style/TextoTitulo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/espacio"
-            android:textSize="@dimen/texto_pequeno" />
+            android:layout_marginTop="@dimen/espacio"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvDetEstado"
+                style="@style/Pill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/espacio_chico" />
+
+            <TextView
+                android:id="@+id/tvDetTipo"
+                style="@style/Pill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/espacio_chico"
+                android:textColor="@color/texto_secundario" />
+
+            <TextView
+                android:id="@+id/tvDetCondicion"
+                style="@style/Pill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/espacio_chico"
+                android:textColor="@color/texto_secundario" />
+
+            <TextView
+                android:id="@+id/tvDetReserva"
+                style="@style/Pill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/preventa"
+                android:textColor="@color/dorado" />
+        </LinearLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espacio_grande"
+            app:cardBackgroundColor="@color/tarjeta_alta"
+            app:strokeColor="@color/dorado_oscuro">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/margen_pantalla">
+
+                <TextView
+                    style="@style/TextoSeccion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/etq_monto" />
+
+                <TextView
+                    android:id="@+id/tvDetMonto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/dorado"
+                    android:textSize="@dimen/texto_total"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvDetCalculo"
+                    style="@style/TextoSecundario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
         <TextView
+            style="@style/TextoSeccion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/etq_descripcion"
-            android:textStyle="bold" />
+            android:layout_marginTop="@dimen/espacio_grande"
+            android:layout_marginBottom="@dimen/espacio_chico"
+            android:text="@string/seccion_pedido" />
 
-        <TextView
-            android:id="@+id/tvDetDescripcion"
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/espacio"
-            android:textSize="@dimen/texto_normal" />
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/margen_pantalla"
+                android:paddingEnd="@dimen/margen_pantalla">
+                <LinearLayout style="@style/FilaInfo">
+
+                    <TextView
+                        style="@style/TextoEtiqueta"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/etq_pedido" />
+
+                    <TextView
+                        android:id="@+id/tvDetPedido"
+                        style="@style/TextoValor"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.4"
+                        android:gravity="end"
+                        android:textIsSelectable="true" />
+                </LinearLayout>
+                <LinearLayout style="@style/FilaInfo">
+
+                    <TextView
+                        style="@style/TextoEtiqueta"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/etq_cliente" />
+
+                    <TextView
+                        android:id="@+id/tvDetCliente"
+                        style="@style/TextoValor"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.4"
+                        android:gravity="end"
+                        android:textIsSelectable="true" />
+                </LinearLayout>
+                <LinearLayout style="@style/FilaInfo">
+
+                    <TextView
+                        style="@style/TextoEtiqueta"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/etq_fecha" />
+
+                    <TextView
+                        android:id="@+id/tvDetFecha"
+                        style="@style/TextoValor"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.4"
+                        android:gravity="end"
+                        android:textIsSelectable="true" />
+                </LinearLayout>
+                <LinearLayout style="@style/FilaInfo">
+
+                    <TextView
+                        style="@style/TextoEtiqueta"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/etq_precio" />
+
+                    <TextView
+                        android:id="@+id/tvDetPrecio"
+                        style="@style/TextoValor"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.4"
+                        android:gravity="end"
+                        android:textIsSelectable="true" />
+                </LinearLayout>
+                <LinearLayout style="@style/FilaInfo">
+
+                    <TextView
+                        style="@style/TextoEtiqueta"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/etq_cantidad" />
+
+                    <TextView
+                        android:id="@+id/tvDetCantidad"
+                        style="@style/TextoValor"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.4"
+                        android:gravity="end"
+                        android:textIsSelectable="true" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
         <TextView
+            style="@style/TextoSeccion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/etq_precio"
-            android:textStyle="bold" />
+            android:layout_marginTop="@dimen/espacio_grande"
+            android:layout_marginBottom="@dimen/espacio_chico"
+            android:text="@string/etq_descripcion" />
 
-        <TextView
-            android:id="@+id/tvDetPrecio"
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/espacio"
-            android:textSize="@dimen/texto_normal" />
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/etq_cantidad"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tvDetCantidad"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/espacio"
-            android:textSize="@dimen/texto_normal" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/etq_fecha"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tvDetFecha"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/espacio"
-            android:textSize="@dimen/texto_normal" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/etq_monto"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tvDetMonto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/espacio"
-            android:textSize="@dimen/texto_normal" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/etiqueta_sede"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tvDetCatalogo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/texto_normal" />
+            <TextView
+                android:id="@+id/tvDetDescripcion"
+                style="@style/TextoValor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingMultiplier="1.25"
+                android:padding="@dimen/margen_pantalla" />
+        </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
-</ScrollView>
+</androidx.core.widget.NestedScrollView>

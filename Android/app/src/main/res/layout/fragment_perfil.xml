@@ -1,48 +1,152 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="@dimen/margen_pantalla">
+    android:background="@color/fondo">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/espacio"
-        android:text="@string/titulo_perfil"
-        android:textSize="@dimen/texto_titulo"
-        android:textStyle="bold" />
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="@dimen/margen_pantalla">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/etq_nombre"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/tvAvatar"
+            android:layout_width="@dimen/tam_avatar"
+            android:layout_height="@dimen/tam_avatar"
+            android:layout_marginTop="@dimen/espacio_grande"
+            android:background="@drawable/bg_circulo"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:importantForAccessibility="no"
+            android:textColor="@color/sobre_dorado"
+            android:textSize="@dimen/texto_titulo"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/tvPerfilNombre"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/espacio"
-        android:textSize="@dimen/texto_normal" />
+        <TextView
+            android:id="@+id/tvPerfilNombre"
+            style="@style/TextoTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espacio" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/etq_correo"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/tvPerfilCorreo"
+            style="@style/TextoSecundario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/tvPerfilCorreo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/espacio"
-        android:textSize="@dimen/texto_normal" />
+        <TextView
+            style="@style/Pill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espacio"
+            android:text="@string/acceso_movil_ok"
+            android:textColor="@color/estado_verde" />
 
-    <Button
-        android:id="@+id/btnCerrarSesion"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="@dimen/alto_minimo_toque"
-        android:text="@string/boton_cerrar_sesion" />
-</LinearLayout>
+        <TextView
+            style="@style/TextoSeccion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espacio_grande"
+            android:layout_marginBottom="@dimen/espacio_chico"
+            android:text="@string/seccion_seguridad" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/margen_pantalla"
+                android:paddingEnd="@dimen/margen_pantalla">
+                <LinearLayout style="@style/FilaInfo">
+
+                    <TextView
+                        style="@style/TextoEtiqueta"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/etq_servidor" />
+
+                    <TextView
+                        android:id="@+id/tvPerfilServidor"
+                        style="@style/TextoValor"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.4"
+                        android:gravity="end"
+                        android:textIsSelectable="true" />
+                </LinearLayout>
+                <LinearLayout style="@style/FilaInfo">
+
+                    <TextView
+                        style="@style/TextoEtiqueta"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/etq_cifrado" />
+
+                    <TextView
+                        android:id="@+id/tvPerfilCifrado"
+                        style="@style/TextoValor"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.4"
+                        android:gravity="end"
+                        android:textIsSelectable="true" />
+                </LinearLayout>
+                <LinearLayout style="@style/FilaInfo">
+
+                    <TextView
+                        style="@style/TextoEtiqueta"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/etq_almacen" />
+
+                    <TextView
+                        android:id="@+id/tvPerfilAlmacen"
+                        style="@style/TextoValor"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.4"
+                        android:gravity="end"
+                        android:textIsSelectable="true" />
+                </LinearLayout>
+                <LinearLayout style="@style/FilaInfo">
+
+                    <TextView
+                        style="@style/TextoEtiqueta"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/etq_version" />
+
+                    <TextView
+                        android:id="@+id/tvPerfilVersion"
+                        style="@style/TextoValor"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.4"
+                        android:gravity="end"
+                        android:textIsSelectable="true" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCerrarSesion"
+            style="@style/BotonPeligro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espacio_grande"
+            android:text="@string/boton_cerrar_sesion"
+            app:icon="@drawable/ic_salir"
+            app:iconGravity="textStart" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

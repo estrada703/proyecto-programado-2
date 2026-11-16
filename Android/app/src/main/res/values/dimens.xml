@@ -1,10 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="margen_pantalla">16dp</dimen>
+    <dimen name="margen_pantalla">20dp</dimen>
     <dimen name="espacio">12dp</dimen>
+    <dimen name="espacio_chico">6dp</dimen>
+    <dimen name="espacio_grande">24dp</dimen>
     <dimen name="alto_minimo_toque">48dp</dimen>
-    <dimen name="texto_titulo">24sp</dimen>
+    <dimen name="alto_boton">56dp</dimen>
+    <dimen name="radio_tarjeta">20dp</dimen>
+    <dimen name="radio_boton">16dp</dimen>
+    <dimen name="borde_tarjeta">1dp</dimen>
+    <dimen name="tam_logo">84dp</dimen>
+    <dimen name="tam_insignia">46dp</dimen>
+    <dimen name="tam_insignia_grande">64dp</dimen>
+    <dimen name="tam_avatar">92dp</dimen>
+    <dimen name="tam_icono_vacio">72dp</dimen>
+    <dimen name="ancho_formulario">440dp</dimen>
+
+    <dimen name="texto_marca">30sp</dimen>
+    <dimen name="texto_titulo">26sp</dimen>
+    <dimen name="texto_subtitulo">18sp</dimen>
     <dimen name="texto_normal">16sp</dimen>
     <dimen name="texto_pequeno">14sp</dimen>
-    <dimen name="ancho_formulario">480dp</dimen>
+    <dimen name="texto_mini">12sp</dimen>
+    <dimen name="texto_kpi">22sp</dimen>
+    <dimen name="texto_total">34sp</dimen>
+
+    <dimen name="barra_alto_fila">40dp</dimen>
+    <dimen name="barra_grosor">10dp</dimen>
+    <dimen name="barra_ancho_etiqueta">120dp</dimen>
 </resources>

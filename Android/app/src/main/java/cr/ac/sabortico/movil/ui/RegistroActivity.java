@@ -17,6 +17,7 @@ import cr.ac.sabortico.movil.datos.remoto.ErrorApi;
 import cr.ac.sabortico.movil.datos.remoto.ResultadoAuth;
 import cr.ac.sabortico.movil.datos.remoto.ServicioAutenticacion;
 import cr.ac.sabortico.movil.util.Bitacora;
+import cr.ac.sabortico.movil.util.Bordes;
 import cr.ac.sabortico.movil.util.Fabrica;
 import cr.ac.sabortico.movil.util.Mensajes;
 
@@ -36,6 +37,7 @@ public class RegistroActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
+        Bordes.aplicar(findViewById(android.R.id.content), true);
         etNombre = findViewById(R.id.etNombre);
         etCorreo = findViewById(R.id.etCorreo);
         etClave = findViewById(R.id.etClave);

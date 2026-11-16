@@ -14,6 +14,7 @@ import cr.ac.sabortico.movil.R;
 import cr.ac.sabortico.movil.modelo.Compra;
 import cr.ac.sabortico.movil.modelo.Sesion;
 import cr.ac.sabortico.movil.util.Bitacora;
+import cr.ac.sabortico.movil.util.Bordes;
 import cr.ac.sabortico.movil.util.Fabrica;
 
 /** Pantalla principal: aloja los fragments de listado, detalle y perfil. */
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
         setContentView(R.layout.activity_main);
+        Bordes.aplicar(findViewById(android.R.id.content), false);
 
         final String nombre = getIntent().getStringExtra(EXTRA_NOMBRE);
         final String correo = getIntent().getStringExtra(EXTRA_CORREO);

@@ -19,6 +19,7 @@ import cr.ac.sabortico.movil.datos.remoto.ResultadoAuth;
 import cr.ac.sabortico.movil.datos.remoto.ServicioAutenticacion;
 import cr.ac.sabortico.movil.modelo.Sesion;
 import cr.ac.sabortico.movil.util.Bitacora;
+import cr.ac.sabortico.movil.util.Bordes;
 import cr.ac.sabortico.movil.util.Fabrica;
 import cr.ac.sabortico.movil.util.Mensajes;
 
@@ -34,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        Bordes.aplicar(findViewById(android.R.id.content), true);
         Sesion.obtener().cerrar(); // al abrir la app siempre se pide ingresar
 
         etCorreo = findViewById(R.id.etCorreo);

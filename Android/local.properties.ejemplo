@@ -1,0 +1,15 @@
+## Copie este archivo como local.properties (NO se sube a GitHub).
+## Android Studio agrega sdk.dir automaticamente.
+# sdk.dir=C\:\\Users\\usuario\\AppData\\Local\\Android\\Sdk
+
+## Direccion base de la Web API del PP1 (10.0.2.2 = la computadora vista desde el emulador)
+api.base.url=http://10.0.2.2:5080/
+
+## Clave AES-256 de PRUEBA (32 bytes en Base64). Debe ser IGUAL a Movil:ClaveAes en la API.
+aes.key.base64=MDEyMzQ1Njc4OWFiY2RlZjAxMjM0NTY3ODlhYmNkZWY=
+
+## Firma del APK de produccion (reemplace con los datos de SU almacen de claves)
+# keystore.file=C\:\\claves\\sabortico.jks
+# keystore.password=cambiar
+# key.alias=sabortico
+# key.password=cambiar

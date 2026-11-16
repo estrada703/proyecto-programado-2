@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margen_pantalla">16dp</dimen>
+    <dimen name="espacio">12dp</dimen>
+    <dimen name="alto_minimo_toque">48dp</dimen>
+    <dimen name="texto_titulo">24sp</dimen>
+    <dimen name="texto_normal">16sp</dimen>
+    <dimen name="texto_pequeno">14sp</dimen>
+    <dimen name="ancho_formulario">480dp</dimen>
+</resources>

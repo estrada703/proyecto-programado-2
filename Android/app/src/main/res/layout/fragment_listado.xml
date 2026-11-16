@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/margen_pantalla">
+
+    <TextView
+        android:id="@+id/tvTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/titulo_listado"
+        android:textSize="@dimen/texto_titulo"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvBanner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@color/fondo_banner"
+        android:padding="8dp"
+        android:textColor="@color/texto_banner"
+        android:visibility="gone" />
+
+    <EditText
+        android:id="@+id/etBuscar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_buscar"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:minHeight="@dimen/alto_minimo_toque" />
+
+    <Spinner
+        android:id="@+id/spCatalogo"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/alto_minimo_toque"
+        android:contentDescription="@string/etiqueta_sede" />
+
+    <ProgressBar
+        android:id="@+id/progreso"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/tvVacio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/margen_pantalla"
+        android:textSize="@dimen/texto_normal"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/btnReintentar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/alto_minimo_toque"
+        android:text="@string/boton_reintentar"
+        android:visibility="gone" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCompras"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+</LinearLayout>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/margen_pantalla">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/espacio"
+        android:text="@string/titulo_perfil"
+        android:textSize="@dimen/texto_titulo"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/etq_nombre"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvPerfilNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/espacio"
+        android:textSize="@dimen/texto_normal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/etq_correo"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvPerfilCorreo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/espacio"
+        android:textSize="@dimen/texto_normal" />
+
+    <Button
+        android:id="@+id/btnCerrarSesion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/alto_minimo_toque"
+        android:text="@string/boton_cerrar_sesion" />
+</LinearLayout>

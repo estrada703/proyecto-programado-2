@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Sabor Tico Admin</string>
+
+    <!-- Ingreso -->
+    <string name="titulo_ingreso">Ingreso de administrador</string>
+    <string name="subtitulo_ingreso">Consulte las compras y reservas de su negocio</string>
+    <string name="hint_correo">Correo electrónico</string>
+    <string name="hint_clave">Contraseña</string>
+    <string name="hint_nombre">Nombre completo</string>
+    <string name="boton_ingresar">Ingresar</string>
+    <string name="boton_ir_registro">Registrar administrador en este dispositivo</string>
+
+    <!-- Registro -->
+    <string name="titulo_registro">Registro en el dispositivo</string>
+    <string name="boton_registrar">Registrar</string>
+    <string name="boton_volver">Volver al ingreso</string>
+
+    <!-- Principal -->
+    <string name="menu_listado">Compras</string>
+    <string name="menu_perfil">Perfil</string>
+    <string name="titulo_listado">Compras y reservas</string>
+    <string name="titulo_detalle">Detalle</string>
+    <string name="titulo_perfil">Perfil del administrador</string>
+    <string name="hint_buscar">Buscar por nombre del producto</string>
+    <string name="todas_las_sedes">Todas las sedes</string>
+    <string name="etiqueta_sede">Sede</string>
+    <string name="lista_vacia">Aún no hay compras ni reservas para mostrar.</string>
+    <string name="sin_resultados">Ningún registro coincide con el filtro.</string>
+    <string name="banner_sin_conexion">Sin conexión. Última actualización: %1$s</string>
+    <string name="cargando">Cargando…</string>
+    <string name="boton_reintentar">Reintentar</string>
+
+    <!-- Detalle -->
+    <string name="etq_descripcion">Descripción</string>
+    <string name="etq_precio">Precio unitario</string>
+    <string name="etq_cantidad">Cantidad</string>
+    <string name="etq_fecha">Fecha</string>
+    <string name="etq_monto">Monto total</string>
+    <string name="etq_tipo">Tipo</string>
+    <string name="descripcion_icono_producto">Ilustración del producto</string>
+
+    <!-- Perfil -->
+    <string name="etq_nombre">Nombre</string>
+    <string name="etq_correo">Correo</string>
+    <string name="boton_cerrar_sesion">Cerrar sesión</string>
+
+    <!-- Mensajes: validación -->
+    <string name="error_correo_vacio">Escriba su correo electrónico.</string>
+    <string name="error_correo_invalido">El correo no tiene un formato válido.</string>
+    <string name="error_clave_vacia">Escriba su contraseña.</string>
+    <string name="error_clave_corta">La contraseña debe tener al menos 6 caracteres.</string>
+    <string name="error_nombre_corto">Escriba su nombre (al menos 2 caracteres).</string>
+
+    <!-- Mensajes: ingreso / registro -->
+    <string name="msg_no_registrado">Este administrador no está registrado en este dispositivo. Regístrelo primero.</string>
+    <string name="msg_clave_local_incorrecta">La contraseña no coincide con la registrada en este dispositivo.</string>
+    <string name="msg_ya_registrado">Ese correo ya está registrado en este dispositivo.</string>
+    <string name="msg_registro_ok">Administrador registrado. Ya puede ingresar.</string>
+    <string name="msg_ingreso_ok">Bienvenido, %1$s.</string>
+    <string name="msg_error_bd">No se pudo guardar el administrador en el dispositivo. Intente de nuevo.</string>
+    <string name="msg_clave_cifrado_faltante">La clave de cifrado no está configurada. Revise local.properties.</string>
+    <string name="msg_error_cifrado">No se pudo proteger la información antes de enviarla.</string>
+
+    <!-- Mensajes: red / API -->
+    <string name="api_400">El servidor rechazó el mensaje por estar alterado o mal formado.</string>
+    <string name="api_401_credenciales">El correo o la contraseña no son válidos en el sistema.</string>
+    <string name="api_403">Su usuario no tiene el acceso móvil habilitado. Pídalo al administrador principal.</string>
+    <string name="api_401_sesion">Su sesión venció. Ingrese de nuevo.</string>
+    <string name="api_red">No hay conexión con el servidor. Verifique que la API esté encendida y su red.</string>
+    <string name="api_tiempo">El servidor tardó demasiado en responder. Intente de nuevo.</string>
+    <string name="api_servidor">El servidor tuvo un problema. Intente más tarde.</string>
+    <string name="api_desconocido">Ocurrió un error inesperado. Intente de nuevo.</string>
+    <string name="api_respuesta_invalida">La respuesta del servidor no tiene el formato esperado.</string>
+</resources>

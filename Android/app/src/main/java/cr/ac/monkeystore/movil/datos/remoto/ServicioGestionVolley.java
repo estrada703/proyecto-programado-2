@@ -40,7 +40,7 @@ public class ServicioGestionVolley implements ServicioGestion {
         cb.alError(err);
     }
 
-    private <R extends Request<?>> void encolar(R peticion) {
+    private <T> void encolar(Request<T> peticion) {
         // PUT no es idempotente para el usuario si se repite tras un error: sin reintentos automáticos.
         int reintentos = peticion.getMethod() == Request.Method.GET ? 1 : 0;
         peticion.setRetryPolicy(new DefaultRetryPolicy(10000, reintentos, 1.0f));
